@@ -80,8 +80,8 @@ import math
 r = float(input("Lütfen r yarıçapını giriniz: "))
 alan = math.pi*r**2
 cevre = 2*math.pi*r
-print("Kürenin alanı: ", alan )
-print("Kürenin çevresi: ", cevre )
+print("Kürenin alanı: ", "{:.4f}".format(alan))
+print("Kürenin çevresi: ", "{:.4f}".format(cevre))
 
 # 5. Soru
 sayi = input("Lütfen bir sayı giriniz: ")
