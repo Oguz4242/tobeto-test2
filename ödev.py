@@ -65,3 +65,12 @@ if sayi == sayi[::-1]:
     print("Evet sayı bir palindromdur.")
 else:
     print("Hayır, sayı bir palindrom değildir.")
+
+# 5. Soru Alternatif
+sayi = input("Lütfen bir sayı giriniz: ")
+sayiTersi = sayi[::-1]
+print("Sayının tersi: ", sayiTersi)
+if sayi == sayiTersi:
+    print("Evet sayı bir palindromdur.")
+else:
+    print("Hayır, sayı bir palindrom değildir.")
