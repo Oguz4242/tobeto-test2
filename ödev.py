@@ -27,7 +27,7 @@ sayi2 = float(input("Lütfen ikinci sayıyı giriniz: "))
 sayi3 = float(input("Lütfen üçüncü sayıyı giriniz: "))
 text = "En büyük sayı: "
 
-if sayi1 >= sayi2 and sayi1>=sayi3:
+if sayi1 >= sayi2 and sayi1 >= sayi3:
     print("{message} {sonuc}".format(message=text, sonuc=sayi1))
 elif sayi2 >= sayi1 and sayi2 >= sayi3:
     print("{message} {sonuc}".format(message=text, sonuc=sayi2))
@@ -47,7 +47,7 @@ print(sonuç)
 
 # 3. Soru Alternatif (Zor)
 def en_büyük_sayi_bul(sayi1, sayi2, sayi3):
-    if sayi1 >= sayi2 and sayi1>=sayi3:
+    if sayi1 >= sayi2 and sayi1 >= sayi3:
         return sayi1
     elif sayi2 >= sayi1 and sayi2 >= sayi3:
         return sayi2
@@ -76,12 +76,12 @@ sayi_listesi.append(float(input("Lütfen üçüncü sayıyı giriniz: ")))
 print("En büyük sayı: ",max(sayi_listesi))
 
 # 4. Soru
+import math
 r = float(input("Lütfen r yarıçapını giriniz: "))
-pi=3.1415
-hacim=(4*pi*(r**3))/3
-alan =(4*pi*(r**2))
-print("Kürenin hacmi: ", hacim )
+alan = math.pi*r**2
+cevre = 2*math.pi*r
 print("Kürenin alanı: ", alan )
+print("Kürenin çevresi: ", cevre )
 
 # 5. Soru
 sayi = input("Lütfen bir sayı giriniz: ")
