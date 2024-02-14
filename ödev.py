@@ -18,11 +18,35 @@ print("Vücut kitle indeksiniz: " "{:.2f}".format(vki))
 # 2. Soru
 maas = float(input("Lütfen maaşınızı giriniz: "))
 zam = float(input("Lütfen zam oranınızı(%) giriniz: "))
-zamlıMaas = (maas + maas * zam/100)
-print("Zamlı maaş miktarınız: " , zamlıMaas)
+zamliMaas = (maas + maas * zam/100)
+print("Zamlı maaş miktarınız: " , zamliMaas)
 
 # 3. Soru
-def en_büyük_sayı_bul(sayi1, sayi2, sayi3):
+sayi1 = float(input("Lütfen ilk sayıyı giriniz: "))
+sayi2 = float(input("Lütfen ikinci sayıyı giriniz: "))
+sayi3 = float(input("Lütfen üçüncü sayıyı giriniz: "))
+text = "En büyük sayı: "
+
+if sayi1 >= sayi2 and sayi1>=sayi3:
+    print("{message} {sonuc}".format(message=text, sonuc=sayi1))
+elif sayi2 >= sayi1 and sayi2 >= sayi3:
+    print("{message} {sonuc}".format(message=text, sonuc=sayi2))
+else:
+    print("{message} {sonuc}".format(message=text, sonuc=sayi3))
+
+# 3. Soru if, elif, else olmadan
+sayi1 = float(input("Lütfen ilk sayıyı giriniz: "))
+sayi2 = float(input("Lütfen ikinci sayıyı giriniz: "))
+sayi3 = float(input("Lütfen üçüncü sayıyı giriniz: "))
+
+sonuç = {sayi1 >= sayi2 and sayi1>=sayi3: "En büyük sayı ilk sayıdır.",
+        sayi2 >= sayi1 and sayi2 >= sayi3: "En büyük sayı ikinci sayıdır."}.get(
+    True, "En büyük sayı üçüncü sayıdır.")
+
+print(sonuç)
+
+# 3. Soru Alternatif (Zor)
+def en_büyük_sayi_bul(sayi1, sayi2, sayi3):
     if sayi1 >= sayi2 and sayi1>=sayi3:
         return sayi1
     elif sayi2 >= sayi1 and sayi2 >= sayi3:
@@ -40,7 +64,7 @@ def kullanicidan_bilgi_al():
         return kullanicidan_bilgi_al()
 
 sayi1, sayi2, sayi3 = kullanicidan_bilgi_al()
-en_büyük_sayi = en_büyük_sayı_bul(sayi1, sayi2, sayi3)
+en_büyük_sayi = en_büyük_sayi_bul(sayi1, sayi2, sayi3)
 print(f"En büyük sayı: {en_büyük_sayi}")
 
 # 3. Soru Alternatif
