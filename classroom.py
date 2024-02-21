@@ -15,11 +15,13 @@ def addTeacher(name,teacherId,department):
 def returnStudentList():
     for student in student_list:
         student.studentInfo()
+        student.departmentInfo()
         print("---------------------------------------------------------")
 
 def returnTeacherList():
     for teacher in teacher_list:
         teacher.teacherInfo()
+        teacher.departmentInfo()
         print("---------------------------------------------------------")
 
 addStudent("Emine",200,"Matematik")
