@@ -1,25 +1,24 @@
 BASE_URL = "https://www.saucedemo.com/"
 
 
-user_standart = "standard_user"
-user_locked_out = "locked_out_user"
-user_problem = "problem_user"
-user_perf_glitch = "performance_glitch_user"
-password_correct = "secret_sauce"
+USER_STANDART = "standard_user"
+USER_LOCKED_OUT = "locked_out_user"
+USER_PROBLEM = "problem_user"
+USER_PERF_GLITCH = "performance_glitch_user"
+PASSWORD_CORRECT = "secret_sauce"
 
 
-errorMessage_invalid_login_text = "Epic sadface: Username and password do not match any user in this service"
-errorMessage_empty_username_text = "Epic sadface: Username is required"
-errorMessage_empty_password_text = "Epic sadface: Password is required"
-errorMessage_lockout_user_text = "Epic sadface: Sorry, this user has been locked out."
-errorMessage_not_as_expected = "Error message is not as expected"
+ERROR_MESSAGE_INVALID_LOGIN_TEXT = "Epic sadface: Username and password do not match any user in this service"
+ERROR_MESSAGE_EMPTY_USERNAME_TEXT = "Epic sadface: Username is required"
+ERROR_MESSAGE_EMPTY_PASSWORD_TEXT = "Epic sadface: Password is required"
+ERROR_MESSAGE_LOCKED_OUT_USER_TEXT = "Epic sadface: Sorry, this user has been locked out."
 
 
-add_backpack_text = "Add to cart"
-remove_backpack_text = "Remove"
+ADD_BACKPACK_TEXT = "Add to cart"
+REMOVE_BACKPACK_TEXT = "Remove"
 
-title_1_text = "Your Cart"
-title_2_text = "Checkout: Your Information"
-title_3_text = "Checkout: Overview"
-complete_header_text = "Thank you for your order!"
+TITLE_1_TEXT = "Your Cart"
+TITLE_2_TEXT = "Checkout: Your Information"
+TITLE_3_TEXT = "Checkout: Overview"
+COMPLETE_HEADER_TEXT = "Thank you for your order!"
 

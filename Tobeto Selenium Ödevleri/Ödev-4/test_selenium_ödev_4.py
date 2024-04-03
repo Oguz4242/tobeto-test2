@@ -25,10 +25,10 @@ class Test_Odev_4():
         return WebDriverWait(self.driver,timeout).until(ec.visibility_of_element_located(locator))
 
     def getData():
-        return [("0","0"),("abc","123"),("tobeto",password_correct),(user_standart,"tobeto")]
+        return [("0","0"),("abc","123"),("tobeto",PASSWORD_CORRECT),(USER_STANDART,"tobeto")]
     
     def getData_2():
-        return [(user_standart,""),(user_locked_out,""),(user_problem,""),(user_perf_glitch,"")]
+        return [(USER_STANDART,""),(USER_LOCKED_OUT,""),(USER_PROBLEM,""),(USER_PERF_GLITCH,"")]
     
     def readInvalidDataFromExcel():
             excelFile = openpyxl.load_workbook("C:/Users/oguzh/OneDrive/Masaüstü/tobeto-test2/Tobeto Selenium Ödevleri/Ödev-3/data/invalidLogin.xlsx")
@@ -51,7 +51,7 @@ class Test_Odev_4():
     #     passwordInput = self.waitForElementVisible((By.ID,password_id))
     #     actions = ActionChains(self.driver)
     #     actions.send_keys_to_element(userNameInput,"")
-    #     actions.send_keys_to_element(passwordInput,password_correct)
+    #     actions.send_keys_to_element(passwordInput,PASSWORD_CORRECT)
     #     actions.perform()
     #     loginButton = self.waitForElementVisible((By.ID,login_button_id))
     #     loginButton.click()
@@ -64,10 +64,10 @@ class Test_Odev_4():
         self.driver.find_element(By.ID, username_id).click()
         self.waitForElementVisible((By.ID, password_id))
         self.driver.find_element(By.ID, password_id).click()
-        self.driver.find_element(By.ID, password_id).send_keys(password_correct)
+        self.driver.find_element(By.ID, password_id).send_keys(PASSWORD_CORRECT)
         self.waitForElementVisible((By.ID, login_button_id))
         self.driver.find_element(By.ID, login_button_id).click()
-        assert self.driver.find_element(By.XPATH, errorMessage_empty_username_xpath).text == errorMessage_empty_username_text
+        assert self.driver.find_element(By.XPATH, errorMessage_empty_username_xpath).text == ERROR_MESSAGE_EMPTY_USERNAME_TEXT
 
     # @pytest.mark.parametrize("username, password", getData_2())
     # def test_empty_password(self, username, password):
@@ -83,20 +83,20 @@ class Test_Odev_4():
     def test_emptypassword(self):
         self.waitForElementVisible((By.ID, username_id))
         self.driver.find_element(By.ID, username_id).click()
-        self.driver.find_element(By.ID, username_id).send_keys(user_standart)
+        self.driver.find_element(By.ID, username_id).send_keys(USER_STANDART)
         self.waitForElementVisible((By.ID, password_id))
         self.driver.find_element(By.ID, password_id).click()
         self.waitForElementVisible((By.ID, login_button_id))
         self.driver.find_element(By.ID, login_button_id).click()
-        assert self.driver.find_element(By.XPATH, errorMessage_empty_password_xpath).text == errorMessage_empty_password_text
+        assert self.driver.find_element(By.XPATH, errorMessage_empty_password_xpath).text == ERROR_MESSAGE_EMPTY_PASSWORD_TEXT
 
 
     # def test_locked_out_user(self):
     #     userNameInput = self.waitForElementVisible((By.ID,username_id))
     #     passwordInput = self.waitForElementVisible((By.ID,password_id))
     #     actions = ActionChains(self.driver)
-    #     actions.send_keys_to_element(userNameInput,user_locked_out)
-    #     actions.send_keys_to_element(passwordInput,password_correct)
+    #     actions.send_keys_to_element(userNameInput,USER_LOCKED_OUT)
+    #     actions.send_keys_to_element(passwordInput,PASSWORD_CORRECT)
     #     actions.perform()
     #     loginButton = self.waitForElementVisible((By.ID,login_button_id))
     #     loginButton.click()
@@ -106,21 +106,21 @@ class Test_Odev_4():
     def test_lockoutuser(self):
         self.waitForElementVisible((By.ID, username_id))
         self.driver.find_element(By.ID, username_id).click()
-        self.driver.find_element(By.ID, username_id).send_keys(user_locked_out)
+        self.driver.find_element(By.ID, username_id).send_keys(USER_LOCKED_OUT)
         self.waitForElementVisible((By.ID, password_id))
         self.driver.find_element(By.ID, password_id).click()
-        self.driver.find_element(By.ID, password_id).send_keys(password_correct)
+        self.driver.find_element(By.ID, password_id).send_keys(PASSWORD_CORRECT)
         self.waitForElementVisible((By.ID, login_button_id))
         self.driver.find_element(By.ID, login_button_id).click()
-        assert self.driver.find_element(By.XPATH, errorMessage_lockout_user_xpath).text == errorMessage_lockout_user_text
+        assert self.driver.find_element(By.XPATH, errorMessage_lockout_user_xpath).text == ERROR_MESSAGE_LOCKED_OUT_USER_TEXT
 
 
     # def test_standard_user(self):
     #     userNameInput = self.waitForElementVisible((By.ID,username_id))
     #     passwordInput = self.waitForElementVisible((By.ID,password_id))
     #     actions = ActionChains(self.driver)
-    #     actions.send_keys_to_element(userNameInput,user_standart)
-    #     actions.send_keys_to_element(passwordInput,password_correct)
+    #     actions.send_keys_to_element(userNameInput,USER_STANDART)
+    #     actions.send_keys_to_element(passwordInput,PASSWORD_CORRECT)
     #     actions.perform()
     #     loginButton = self.waitForElementVisible((By.ID,login_button_id))
     #     loginButton.click()
@@ -131,10 +131,10 @@ class Test_Odev_4():
     def test_standarduser(self):
         self.waitForElementVisible((By.ID, username_id))
         self.driver.find_element(By.ID, username_id).click()
-        self.driver.find_element(By.ID, username_id).send_keys(user_standart)
+        self.driver.find_element(By.ID, username_id).send_keys(USER_STANDART)
         self.waitForElementVisible((By.ID, password_id))
         self.driver.find_element(By.ID, password_id).click()
-        self.driver.find_element(By.ID, password_id).send_keys(password_correct)
+        self.driver.find_element(By.ID, password_id).send_keys(PASSWORD_CORRECT)
         self.waitForElementVisible((By.ID, login_button_id))
         self.driver.find_element(By.ID, login_button_id).click()
         self.vars = {}  # Seleniumdan gelen kodda bu kısım yok fakat burası olmadan hata veriyor.
@@ -176,15 +176,15 @@ class Test_Odev_4():
         self.driver.find_element(By.ID, password_id).send_keys("0")
         self.waitForElementVisible((By.ID, login_button_id))
         self.driver.find_element(By.ID, login_button_id).click()
-        assert self.driver.find_element(By.XPATH, errorMessage_invalid_login_xpath).text == errorMessage_invalid_login_text
+        assert self.driver.find_element(By.XPATH, errorMessage_invalid_login_xpath).text == ERROR_MESSAGE_INVALID_LOGIN_TEXT
 
 
     # def test_add_to_cart(self):
     #     userNameInput = self.waitForElementVisible((By.ID,username_id))
     #     passwordInput =self.waitForElementVisible((By.ID,password_id))
     #     actions = ActionChains(self.driver)
-    #     actions.send_keys_to_element(userNameInput,user_standart)
-    #     actions.send_keys_to_element(passwordInput,password_correct)
+    #     actions.send_keys_to_element(userNameInput,USER_STANDART)
+    #     actions.send_keys_to_element(passwordInput,PASSWORD_CORRECT)
     #     actions.perform()
     #     loginButton = self.waitForElementVisible((By.ID,login_button_id))
     #     loginButton.click()
@@ -196,10 +196,10 @@ class Test_Odev_4():
     def test_addtocart(self):
         self.waitForElementVisible((By.ID, username_id))
         self.driver.find_element(By.ID, username_id).click()
-        self.driver.find_element(By.ID, username_id).send_keys(user_standart)
+        self.driver.find_element(By.ID, username_id).send_keys(USER_STANDART)
         self.waitForElementVisible((By.ID, password_id))
         self.driver.find_element(By.ID, password_id).click()
-        self.driver.find_element(By.ID, password_id).send_keys(password_correct)
+        self.driver.find_element(By.ID, password_id).send_keys(PASSWORD_CORRECT)
         self.waitForElementVisible((By.ID, login_button_id))
         self.driver.find_element(By.ID, login_button_id).click()
         self.waitForElementVisible((By.ID, add_backpack_id))
@@ -211,8 +211,8 @@ class Test_Odev_4():
     #     userNameInput = self.waitForElementVisible((By.ID,username_id))
     #     passwordInput =self.waitForElementVisible((By.ID,password_id))
     #     actions = ActionChains(self.driver)
-    #     actions.send_keys_to_element(userNameInput,user_standart)
-    #     actions.send_keys_to_element(passwordInput,password_correct)
+    #     actions.send_keys_to_element(userNameInput,USER_STANDART)
+    #     actions.send_keys_to_element(passwordInput,PASSWORD_CORRECT)
     #     actions.perform()
     #     loginButton = self.waitForElementVisible((By.ID,login_button_id))
     #     loginButton.click()
@@ -227,27 +227,27 @@ class Test_Odev_4():
     def test_remove(self):
         self.waitForElementVisible((By.ID, username_id))
         self.driver.find_element(By.ID, username_id).click()
-        self.driver.find_element(By.ID, username_id).send_keys(user_standart)
+        self.driver.find_element(By.ID, username_id).send_keys(USER_STANDART)
         self.waitForElementVisible((By.ID, password_id))
         self.driver.find_element(By.ID, password_id).click()
-        self.driver.find_element(By.ID, password_id).send_keys(password_correct)
+        self.driver.find_element(By.ID, password_id).send_keys(PASSWORD_CORRECT)
         self.waitForElementVisible((By.ID, login_button_id))
         self.driver.find_element(By.ID, login_button_id).click()
         self.waitForElementVisible((By.ID, add_backpack_id))
         self.driver.find_element(By.ID, add_backpack_id).click()
         self.waitForElementVisible((By.ID, remove_backpack_id))
-        assert self.driver.find_element(By.ID, remove_backpack_id).text == remove_backpack_text
+        assert self.driver.find_element(By.ID, remove_backpack_id).text == REMOVE_BACKPACK_TEXT
         self.driver.find_element(By.ID, remove_backpack_id).click()
         self.waitForElementVisible((By.ID, add_backpack_id))
-        assert self.driver.find_element(By.ID, add_backpack_id).text == add_backpack_text
+        assert self.driver.find_element(By.ID, add_backpack_id).text == ADD_BACKPACK_TEXT
 
 
     # def test_checkout(self):
     #     userNameInput = self.waitForElementVisible((By.ID,username_id))
     #     passwordInput =self.waitForElementVisible((By.ID,password_id))
     #     actions = ActionChains(self.driver)
-    #     actions.send_keys_to_element(userNameInput,user_standart)
-    #     actions.send_keys_to_element(passwordInput,password_correct)
+    #     actions.send_keys_to_element(userNameInput,USER_STANDART)
+    #     actions.send_keys_to_element(passwordInput,PASSWORD_CORRECT)
     #     actions.perform()
     #     loginButton = self.waitForElementVisible((By.ID,login_button_id))
     #     loginButton.click()
@@ -281,10 +281,10 @@ class Test_Odev_4():
     def test_checkout(self):
         self.waitForElementVisible((By.ID, username_id))
         self.driver.find_element(By.ID, username_id).click()
-        self.driver.find_element(By.ID, username_id).send_keys(user_standart)
+        self.driver.find_element(By.ID, username_id).send_keys(USER_STANDART)
         self.waitForElementVisible((By.ID, password_id))
         self.driver.find_element(By.ID, password_id).click()
-        self.driver.find_element(By.ID, password_id).send_keys(password_correct)
+        self.driver.find_element(By.ID, password_id).send_keys(PASSWORD_CORRECT)
         self.waitForElementVisible((By.ID, login_button_id))
         self.driver.find_element(By.ID, login_button_id).click()
         self.waitForElementVisible((By.ID, add_backpack_id))
@@ -292,11 +292,11 @@ class Test_Odev_4():
         self.waitForElementVisible((By.CSS_SELECTOR, shopping_cart_css))
         self.driver.find_element(By.CSS_SELECTOR, shopping_cart_css).click()
         self.waitForElementVisible((By.CSS_SELECTOR, title_css))
-        assert self.driver.find_element(By.CSS_SELECTOR, title_css).text == title_1_text
+        assert self.driver.find_element(By.CSS_SELECTOR, title_css).text == TITLE_1_TEXT
         self.waitForElementVisible((By.ID, checkout_button_id))
         self.driver.find_element(By.ID, checkout_button_id).click()
         self.waitForElementVisible((By.CSS_SELECTOR, title_css))
-        assert self.driver.find_element(By.CSS_SELECTOR, title_css).text == title_2_text
+        assert self.driver.find_element(By.CSS_SELECTOR, title_css).text == TITLE_2_TEXT
         self.waitForElementVisible((By.ID, firstname_id))
         self.driver.find_element(By.ID, firstname_id).click()
         self.driver.find_element(By.ID, firstname_id).send_keys("1")
@@ -309,9 +309,9 @@ class Test_Odev_4():
         self.waitForElementVisible((By.ID, continue_button_id))
         self.driver.find_element(By.ID, continue_button_id).click()
         self.waitForElementVisible((By.CSS_SELECTOR, title_css))
-        assert self.driver.find_element(By.CSS_SELECTOR, title_css).text == title_3_text
+        assert self.driver.find_element(By.CSS_SELECTOR, title_css).text == TITLE_3_TEXT
         self.waitForElementVisible((By.ID, finish_button_id))
         self.driver.find_element(By.ID, finish_button_id).click()
         self.waitForElementVisible((By.CSS_SELECTOR, complete_header_css))
-        assert self.driver.find_element(By.CSS_SELECTOR, complete_header_css).text == complete_header_text
+        assert self.driver.find_element(By.CSS_SELECTOR, complete_header_css).text == COMPLETE_HEADER_TEXT
 
