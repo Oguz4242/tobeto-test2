@@ -5,7 +5,8 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.common.action_chains import ActionChains
-from constants.globalConstants import *
+from constants.generalConstants import *
+from locators.generalLocators import *
 import pytest
 import openpyxl
 import json
@@ -66,7 +67,7 @@ class Test_Odev_4():
         self.driver.find_element(By.ID, password_id).send_keys(password_correct)
         self.waitForElementVisible((By.ID, login_button_id))
         self.driver.find_element(By.ID, login_button_id).click()
-        assert self.driver.find_element(By.XPATH, "//div[@id=\'login_button_container\']/div/form/div[3]/h3").text == errorMessage_empty_username_text
+        assert self.driver.find_element(By.XPATH, errorMessage_empty_username_xpath).text == errorMessage_empty_username_text
 
     # @pytest.mark.parametrize("username, password", getData_2())
     # def test_empty_password(self, username, password):
@@ -87,7 +88,7 @@ class Test_Odev_4():
         self.driver.find_element(By.ID, password_id).click()
         self.waitForElementVisible((By.ID, login_button_id))
         self.driver.find_element(By.ID, login_button_id).click()
-        assert self.driver.find_element(By.XPATH, "//div[@id=\'login_button_container\']/div/form/div[3]/h3").text == errorMessage_empty_password_text
+        assert self.driver.find_element(By.XPATH, errorMessage_empty_password_xpath).text == errorMessage_empty_password_text
 
 
     # def test_locked_out_user(self):
@@ -111,7 +112,7 @@ class Test_Odev_4():
         self.driver.find_element(By.ID, password_id).send_keys(password_correct)
         self.waitForElementVisible((By.ID, login_button_id))
         self.driver.find_element(By.ID, login_button_id).click()
-        assert self.driver.find_element(By.XPATH, "//div[@id=\'login_button_container\']/div/form/div[3]/h3").text == errorMessage_lockout_user_text
+        assert self.driver.find_element(By.XPATH, errorMessage_lockout_user_xpath).text == errorMessage_lockout_user_text
 
 
     # def test_standard_user(self):
@@ -139,6 +140,8 @@ class Test_Odev_4():
         self.vars = {}  # Seleniumdan gelen kodda bu kısım yok fakat burası olmadan hata veriyor.
         self.vars["the_url"] = self.driver.execute_script("return document.URL")
         assert(self.vars["the_url"] == "https://www.saucedemo.com/inventory.html")
+        self.vars["elementCount"] = len(self.driver.find_elements(By.XPATH, "//div[2]/div/div/div/div"))
+        assert(self.vars["elementCount"] == 6)
 
 
     # @pytest.mark.parametrize("username, password", readInvalidDataFromExcel())
@@ -173,7 +176,7 @@ class Test_Odev_4():
         self.driver.find_element(By.ID, password_id).send_keys("0")
         self.waitForElementVisible((By.ID, login_button_id))
         self.driver.find_element(By.ID, login_button_id).click()
-        assert self.driver.find_element(By.XPATH, "//div[@id=\'login_button_container\']/div/form/div[3]/h3").text == errorMessage_text
+        assert self.driver.find_element(By.XPATH, errorMessage_invalid_login_xpath).text == errorMessage_invalid_login_text
 
 
     # def test_add_to_cart(self):
@@ -201,8 +204,8 @@ class Test_Odev_4():
         self.driver.find_element(By.ID, login_button_id).click()
         self.waitForElementVisible((By.ID, add_backpack_id))
         self.driver.find_element(By.ID, add_backpack_id).click()
-        self.waitForElementVisible((By.XPATH, "//div[@id=\'shopping_cart_container\']/a"))
-        assert self.driver.find_element(By.XPATH, "//div[@id=\'shopping_cart_container\']/a/span").text == "1"
+        self.waitForElementVisible((By.XPATH, shopping_cart_container_xpath))
+        assert self.driver.find_element(By.XPATH, shopping_cart_container_xpath).text == "1"
 
     # def test_remove(self):
     #     userNameInput = self.waitForElementVisible((By.ID,username_id))
@@ -233,10 +236,10 @@ class Test_Odev_4():
         self.waitForElementVisible((By.ID, add_backpack_id))
         self.driver.find_element(By.ID, add_backpack_id).click()
         self.waitForElementVisible((By.ID, remove_backpack_id))
-        assert self.driver.find_element(By.ID, remove_backpack_id).text == "Remove"
+        assert self.driver.find_element(By.ID, remove_backpack_id).text == remove_backpack_text
         self.driver.find_element(By.ID, remove_backpack_id).click()
         self.waitForElementVisible((By.ID, add_backpack_id))
-        assert self.driver.find_element(By.ID, add_backpack_id).text == "Add to cart"
+        assert self.driver.find_element(By.ID, add_backpack_id).text == add_backpack_text
 
 
     # def test_checkout(self):
@@ -254,23 +257,23 @@ class Test_Odev_4():
     #     shoppingCartButton.click()
     #     title_1 = self.waitForElementVisible((By.CLASS_NAME, title_name))
     #     assert title_1.text == "Your Cart"
-    #     checkoutButton = self.waitForElementVisible((By.ID,"checkout"))
+    #     checkoutButton = self.waitForElementVisible((By.ID,checkout_button_id))
     #     checkoutButton.click()
     #     title_2 = self.waitForElementVisible((By.CLASS_NAME, title_name))
     #     assert title_2.text == "Checkout: Your Information"
-    #     firstNameInput = self.waitForElementVisible((By.ID,"first-name"))
-    #     lastNameInput =self.waitForElementVisible((By.ID,"last-name"))
-    #     postalCodeInput =self.waitForElementVisible((By.ID,"postal-code"))
+    #     firstNameInput = self.waitForElementVisible((By.ID,firstname_id))
+    #     lastNameInput =self.waitForElementVisible((By.ID,lastname_id))
+    #     postalCodeInput =self.waitForElementVisible((By.ID,postalcode_id))
     #     actions = ActionChains(self.driver)
     #     actions.send_keys_to_element(firstNameInput,"1")
     #     actions.send_keys_to_element(lastNameInput,"1")
     #     actions.send_keys_to_element(postalCodeInput,"1")
     #     actions.perform()
-    #     continueButton = self.waitForElementVisible((By.ID,"continue"))
+    #     continueButton = self.waitForElementVisible((By.ID,continue_button_id))
     #     continueButton.click()
     #     title_3 = self.waitForElementVisible((By.CLASS_NAME, title_name))
     #     assert title_3.text == "Checkout: Overview"
-    #     finishButton = self.waitForElementVisible((By.ID,"finish"))
+    #     finishButton = self.waitForElementVisible((By.ID,finish_button_id))
     #     finishButton.click()
     #     thanksMessage = self.waitForElementVisible((By.CLASS_NAME, "complete-header"))
     #     assert thanksMessage.text == "Thank you for your order!"
@@ -286,29 +289,29 @@ class Test_Odev_4():
         self.driver.find_element(By.ID, login_button_id).click()
         self.waitForElementVisible((By.ID, add_backpack_id))
         self.driver.find_element(By.ID, add_backpack_id).click()
-        self.waitForElementVisible((By.CSS_SELECTOR, ".shopping_cart_link"))
-        self.driver.find_element(By.CSS_SELECTOR, ".shopping_cart_link").click()
-        self.waitForElementVisible((By.CSS_SELECTOR, ".title"))
-        assert self.driver.find_element(By.CSS_SELECTOR, ".title").text == "Your Cart"
-        self.waitForElementVisible((By.ID, "checkout"))
-        self.driver.find_element(By.ID, "checkout").click()
-        self.waitForElementVisible((By.CSS_SELECTOR, ".title"))
-        assert self.driver.find_element(By.CSS_SELECTOR, ".title").text == "Checkout: Your Information"
-        self.waitForElementVisible((By.ID, "first-name"))
-        self.driver.find_element(By.ID, "first-name").click()
-        self.driver.find_element(By.ID, "first-name").send_keys("1")
-        self.waitForElementVisible((By.ID, "last-name"))
-        self.driver.find_element(By.ID, "last-name").click()
-        self.driver.find_element(By.ID, "last-name").send_keys("1")
-        self.waitForElementVisible((By.ID, "postal-code"))
-        self.driver.find_element(By.ID, "postal-code").click()
-        self.driver.find_element(By.ID, "postal-code").send_keys("1")
-        self.waitForElementVisible((By.ID, "continue"))
-        self.driver.find_element(By.ID, "continue").click()
-        self.waitForElementVisible((By.CSS_SELECTOR, ".title"))
-        assert self.driver.find_element(By.CSS_SELECTOR, ".title").text == "Checkout: Overview"
-        self.waitForElementVisible((By.ID, "finish"))
-        self.driver.find_element(By.ID, "finish").click()
-        self.waitForElementVisible((By.CSS_SELECTOR, ".complete-header"))
-        assert self.driver.find_element(By.CSS_SELECTOR, ".complete-header").text == "Thank you for your order!"
+        self.waitForElementVisible((By.CSS_SELECTOR, shopping_cart_css))
+        self.driver.find_element(By.CSS_SELECTOR, shopping_cart_css).click()
+        self.waitForElementVisible((By.CSS_SELECTOR, title_css))
+        assert self.driver.find_element(By.CSS_SELECTOR, title_css).text == title_1_text
+        self.waitForElementVisible((By.ID, checkout_button_id))
+        self.driver.find_element(By.ID, checkout_button_id).click()
+        self.waitForElementVisible((By.CSS_SELECTOR, title_css))
+        assert self.driver.find_element(By.CSS_SELECTOR, title_css).text == title_2_text
+        self.waitForElementVisible((By.ID, firstname_id))
+        self.driver.find_element(By.ID, firstname_id).click()
+        self.driver.find_element(By.ID, firstname_id).send_keys("1")
+        self.waitForElementVisible((By.ID, lastname_id))
+        self.driver.find_element(By.ID, lastname_id).click()
+        self.driver.find_element(By.ID, lastname_id).send_keys("1")
+        self.waitForElementVisible((By.ID, postalcode_id))
+        self.driver.find_element(By.ID, postalcode_id).click()
+        self.driver.find_element(By.ID, postalcode_id).send_keys("1")
+        self.waitForElementVisible((By.ID, continue_button_id))
+        self.driver.find_element(By.ID, continue_button_id).click()
+        self.waitForElementVisible((By.CSS_SELECTOR, title_css))
+        assert self.driver.find_element(By.CSS_SELECTOR, title_css).text == title_3_text
+        self.waitForElementVisible((By.ID, finish_button_id))
+        self.driver.find_element(By.ID, finish_button_id).click()
+        self.waitForElementVisible((By.CSS_SELECTOR, complete_header_css))
+        assert self.driver.find_element(By.CSS_SELECTOR, complete_header_css).text == complete_header_text
 
